@@ -1,0 +1,33 @@
+$licorice: #220901ff;
+$blood-red: #621708ff;
+$red: #ff0000ff;
+$orange-web: #f6aa1cff;
+$white: #fcfcfcff;
+
+
+$primary-color: $licorice;
+$secondary-color: $white;
+$tertiary-color: $red;
+$accent-color: $orange-web;
+$secondary-accent-color: $blood-red;
+
+@import 'animate.css';
+
+@font-face {
+  font-family: 'Roboto-Light';
+  src: url('./assets/fonts/Roboto-Light.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Cambo';
+  src: url('./assets/fonts/Cambo-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'JetBrainsMono';
+  src: url('./assets/fonts/JetBrainsMono-Medium.ttf') format('truetype');
+}
+
+input, textarea {
+  font-family: 'Roboto-Light', sans-serif;
+}

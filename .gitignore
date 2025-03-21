@@ -10,9 +10,12 @@
 
 # production
 /build
+/dist
 
 # misc
 .DS_Store
+.env
+.env.*
 .env.local
 .env.development.local
 .env.test.local
@@ -21,3 +24,17 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+*.log
+*.cache
+
+# editor-specific
+.vscode/
+.idea/
+*.swp
+
+# system files
+Thumbs.db
+
+# static analysis
+.eslintcache
+.stylelintcache

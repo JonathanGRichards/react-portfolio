@@ -1,15 +1,15 @@
-$licorice: #220901ff;
-$blood-red: #621708ff;
+$space-cadet: #2B2D42;
+$jet: #33312E;
 $red: #ff0000ff;
-$orange-web: #f6aa1cff;
-$white: #fcfcfcff;
+$cyan: #25F4EE ;
+$snow: #FFF7F8;
 
 
-$primary-color: $licorice;
-$secondary-color: $white;
+$primary-color: $jet;
+$secondary-color: $space-cadet;
 $tertiary-color: $red;
-$accent-color: $orange-web;
-$secondary-accent-color: $blood-red;
+$accent-color: $cyan;
+$secondary-accent-color: $snow;
 
 @import 'animate.css';
 

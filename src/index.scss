@@ -1,3 +1,6 @@
+@import 'styles/_variables.scss';
+@import 'styles/_typography.scss';
+
 html {
   font-size: 62.5%;
 }
@@ -5,10 +8,11 @@ html {
 body {
   margin: 0;
   font-family: 300 12px/1.6 'Roboto-light', 'sans-serif';
-  color: #FFF7F8;
-  background-color: #33312E;
+  color: $light-color;
+  background-color: $dark-color;
   overflow: hidden;
   display: block;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+

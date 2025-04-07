@@ -1,0 +1,40 @@
+// General Styles
+html {
+  font-size: 62.5%;
+}
+
+*,
+*:before, *:after {
+  -webkit-box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font: 300 12px/1.6 'Roboto-light', 'sans-serif';
+  color: $light-color;
+  background-color: $dark-color;
+  overflow: hidden;
+  display: block;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+h2,
+h3,
+h4 {
+  text-transform: uppercase;
+}
+
+img {
+  width: 100%;
+}

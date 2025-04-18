@@ -14,7 +14,7 @@ html {
 body {
   font: 300 12px/1.6 'Roboto-light', 'sans-serif';
   color: $light-color;
-  background-color: $dark-color;
+  background: url('../assets/img/schematics.png') no-repeat center center/cover fixed;
   overflow: hidden;
   display: block;
   -webkit-font-smoothing: antialiased;

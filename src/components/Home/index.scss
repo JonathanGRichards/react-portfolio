@@ -1,0 +1,90 @@
+@import '../../styles/_variables.scss';
+
+
+
+.home-page{
+  .text-zone {
+    display: flex;
+    left: 15%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    max-height: 90%;
+  }
+  h1 {
+    color: $light-color;
+    font-size: 42px;
+    margin: 0;
+    font-family: 'IBMPlexMono', sans-serif;
+    font-weight: 800;
+
+    &::before {
+      content: '<h1>';
+      font-family: 'Cambo', sans-serif;
+      color: $accent-color;
+      font-size: 18px;
+      position: absolute;
+      margin-top: -40px;
+      left: 15px;
+      opacity: 0.6;
+      font-weight: 400;
+    }
+
+    &::after {
+      content: '</h1>';
+      font-family: 'Cambo', sans-serif;
+      color: $accent-color;
+      font-size: 18px;
+      position: absolute;
+      margin-top: 28px;
+      margin-left: 20px;
+      opacity: 0.6;
+      font-weight: 400;
+      animation: fadeInTo60 0.5s 1.8s backwards;
+    }
+
+    img {
+      width: 26px;
+      height: auto;
+      margin-left: 20px;
+      opacity: 0;
+      animation: rotateIn 1s 1.4s linear both;
+
+    }
+  }
+
+  h2 {
+    color: $light-color;
+    opacity : 0.6;
+    margin-top: 20px;
+    font-weight: 400;
+    font-family: 'Roboto-light', sans-serif;
+    letter-spacing: 3px;
+    animation: fadeInTo60 1s 1.8s backwards;
+  }
+
+}
+
+.flat-button {
+  color: $accent-color;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 4px;
+  font-family: 'Roboto-light', sans-serif;
+  text-decoration: none;
+  padding: 10px 18px;
+  border: 1px solid $accent-color;
+  border-radius: 5px;
+  margin-top: 25px;
+  animation: fadeInAnimation 0.5s 2.2s backwards;
+  white-space: nowrap;
+
+  &:hover {
+    background-color: $accent-color;
+    color: $primary-color;
+    transition: all 0.3s ease-in-out;
+  }
+}

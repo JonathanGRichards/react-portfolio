@@ -1,0 +1,77 @@
+@import '../../../styles/_variables.scss';
+
+.logo-container {
+  z-index: 0;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 15%;
+  width: 40vw;
+  height: 40vh;
+  left: auto;
+  margin: auto;
+
+  svg {
+    width: 100%;
+    height: auto;
+    margin: auto;
+    position: absolute;
+    animation: fadeIn 1s 1.8s backwards, fadeOut 1s 7s forwards;
+  }
+}
+
+.solid-logo {
+  position: absolute; 
+  opacity: 0;
+  left: 0;
+  width: 100%;
+  left: auto;
+  margin: auto;
+  z-index: 1;
+  animation: fadeIn 4s 4s ease-in forwards;
+}
+
+.svg-container {
+  .svg-path {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: draw 10s  1s ease-in forwards;
+  }
+  stroke: $light-color !important;
+  stroke-width: .1px;
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0; // Reveal the stroke
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeInTo60 {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.6;
+  }
+}

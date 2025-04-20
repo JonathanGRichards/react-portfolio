@@ -1,0 +1,80 @@
+@import '../../Styles/_variables.scss';
+
+.stage-cube-cont {
+  width: 60%; // Full width of the parent container
+  height: 100%; // Full height of the parent container
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: center; // Center the cube horizontally
+  align-items: center; // Center the cube vertically
+  overflow: hidden;
+}
+
+.cubespinner {
+  animation: spincube 12s ease-in-out infinite;
+  transform-style: preserve-3d;
+  transform-origin: center; // Rotate around the center
+  width: 20vmin; // Cube size relative to the viewport
+  height: 20vmin; // Cube size relative to the viewport
+
+  div {
+    position: absolute;
+    width: 100%; // Match the size of the cube
+    height: 100%; // Match the size of the cube
+    background-color: rgba($light-color, 0.5);
+    text-align: center;
+    font-size: 16vmin; // Font size scales with the cube size
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 10px 0px $light-color;
+  }
+
+  .face1 {
+    transform: translateZ(10vmin); // Half the cube size
+  }
+
+  .face2 {
+    transform: rotateY(90deg) translateZ(10vmin);
+  }
+
+  .face3 {
+    transform: rotateY(90deg) rotateX(90deg) translateZ(10vmin);
+  }
+
+  .face4 {
+    transform: rotateY(180deg) rotateZ(90deg) translateZ(10vmin);
+  }
+
+  .face5 {
+    transform: rotateY(-90deg) rotateZ(90deg) translateZ(10vmin);
+  }
+
+  .face6 {
+    transform: rotateX(-90deg) translateZ(10vmin);
+  }
+}
+
+@keyframes spincube {
+  from,
+  to {
+    transform: rotateY(0deg) rotateX(0deg) rotateZ(0deg);
+  }
+  16% {
+    transform: rotateY(-90deg);
+  }
+  33% {
+    transform: rotateY(-90deg) rotateZ(90deg);
+  }
+  50% {
+    transform: rotateY(-180deg) rotateZ(0deg);
+  }
+  66% {
+    transform: rotateY(-270deg) rotateZ(90deg);
+  }
+  83% {
+    transform: rotateX(90deg);
+  }
+}

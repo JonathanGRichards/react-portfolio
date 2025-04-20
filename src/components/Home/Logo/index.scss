@@ -19,6 +19,7 @@
     margin: auto;
     position: absolute;
     animation: fadeIn 1s 1.8s backwards, fadeOut 1s 7s forwards;
+    
   }
 }
 
@@ -27,10 +28,18 @@
   opacity: 0;
   left: 0;
   width: 100%;
-  left: auto;
   margin: auto;
-  z-index: 1;
+  z-index: 10;
   animation: fadeIn 4s 4s ease-in forwards;
+  transition: filter 0.2s ease-in, filter 0.5s ease-out;
+
+  &:hover {
+    filter: drop-shadow(0 0 10px $primary-color)
+            drop-shadow(0 0 20px $primary-color)
+            drop-shadow(0 0 40px lighten($primary-color, 20%))
+            drop-shadow(0 0 80px lighten($primary-color, 30%));
+  }
+
 }
 
 .svg-container {

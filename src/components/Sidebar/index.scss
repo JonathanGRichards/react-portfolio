@@ -123,7 +123,7 @@
       }
 
       &:hover svg {
-        text-shadow: 0 0 10px $primary-color, 0 0 20px $primary-color,
+        text-shadow: 0 0 10px $primary-color, 0 0 10px $primary-color,
           0 0 40px lighten($primary-color, 20%),
           0 0 80px lighten($primary-color, 30%);
         transform: scale(1.2); // Slightly enlarge the icon on hover

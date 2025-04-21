@@ -1,0 +1,50 @@
+@import '../../styles/variables.scss';
+
+.contact-form {
+  width: 100%;
+  margin-top: 20px;
+
+  .text-fields {
+    display: grid;
+    grid-template-areas:
+      'name email'
+      'subject phone'
+      'message message';
+    gap: 1.2rem;
+    margin-bottom: 1.2rem;
+
+    // Grid areas
+
+    .name-input {
+      grid-area: name;
+    }
+    .subject-input {
+      grid-area: subject;
+    }
+    .phone-input {
+      grid-area: phone;
+    }
+    .email-input {
+      grid-area: email;
+    }
+    .message-input {
+      grid-area: message;
+      min-height: 10rem;
+      font-family: inherit;
+    }
+
+    .text-input {
+      font-family: 'IBM Plex Mono', monospace;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 0.5rem;
+      background-color: $accent-color;
+      color: $dark-color;
+      font-size: 1.4rem;
+    }
+  }
+  button[type='submit'] {
+    width: 100%;
+    color: $dark-color;
+  }
+}

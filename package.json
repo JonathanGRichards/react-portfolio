@@ -14,11 +14,16 @@
     "@testing-library/react": "^16.2.0",
     "@testing-library/user-event": "^13.5.0",
     "animate.css": "^4.1.1",
+    "axios": "^1.8.4",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
     "emailjs-com": "^3.2.0",
+    "express": "^5.1.0",
     "framer-motion": "^12.7.4",
     "gsap": "^3.12.7",
     "gsap-trial": "^3.12.7",
     "loaders.css": "^0.1.2",
+    "nodemailer": "^6.10.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-leaflet": "^5.0.0",
@@ -30,10 +35,12 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "nodemon backend/index.js",
+    "client": "yarn react-scripts start",
+    "dev": "concurrently \"yarn start\" \"yarn client\"",
+    "build": "yarn react-scripts build",
+    "test": "yarn react-scripts test",
+    "eject": "yarn react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
@@ -54,6 +61,8 @@
     ]
   },
   "devDependencies": {
+    "concurrently": "^9.1.2",
+    "nodemon": "^3.1.9",
     "resolve-url-loader": "^5.0.0"
   }
 }

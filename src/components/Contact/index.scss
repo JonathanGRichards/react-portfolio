@@ -8,7 +8,7 @@
     display: grid;
     grid-template-areas:
       'name email'
-      'subject phone'
+      'subject subject'
       'message message';
     gap: 1.2rem;
     margin-bottom: 1.2rem;
@@ -20,9 +20,6 @@
     }
     .subject-input {
       grid-area: subject;
-    }
-    .phone-input {
-      grid-area: phone;
     }
     .email-input {
       grid-area: email;

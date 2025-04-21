@@ -1,0 +1,57 @@
+.cube-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  perspective: 1200px;
+  transform-style: preserve-3d;
+}
+
+.cube {
+  position: relative;
+  transform-style: preserve-3d;
+  transform-origin: center;
+  width: 200px;
+  height: 200px;
+}
+
+.face {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  transform-style: preserve-3d;
+  backface-visibility: visible;
+  width: 200px;
+  height: 200px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+}
+
+// Media queries for responsive design
+@media screen and (max-width: 1200px) {
+  .cube {
+    transform: scale(0.8);
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .cube {
+    transform: scale(0.6);
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .cube {
+    transform: scale(0.4);
+  }
+}

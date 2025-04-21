@@ -18,6 +18,7 @@ const Contact = () => {
     subject: '',
     message: '',
   })
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -25,83 +26,110 @@ const Contact = () => {
   }
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    console.log('Form data:', formData);
+    e.preventDefault()
+    setIsSubmitting(true)
+
     try {
-      const response = await axios.post('http://localhost:5000/send-email', formData);
-      console.log('Response:', response);
-      alert('Email sent successfully!');
+      await axios.post('http://localhost:5000/send-email', formData)
+      alert('Message sent successfully!')
+      setFormData({ name: '', email: '', subject: '', message: '' })
     } catch (error) {
-      console.error('Error:', error);
-      alert('Failed to send email.');
+      console.error('Error:', error)
+      alert('Failed to send message. Please try again later.')
+    } finally {
+      setIsSubmitting(false)
     }
-  };
+  }
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setLetterClass('text-animate-hover')
     }, ANIMATION_DELAY)
-    return () => clearTimeout(timer) // Cleanup timeout on unmount
+    return () => clearTimeout(timer)
   }, [])
 
   return (
-    <div className="container contact-page">
-      <div className="text-zone">
-        <h1>
-          <AnimatedLetters
-            letterClass={letterClass}
-            strArray={strArray}
-            idx={15}
-          />
-        </h1>
-        <p>
-          I am interested in freelance opportunities, especially ambitious or
-          large projects. However, if you have other requests or questions,
-          don't hesitate to contact me using the form below.
-        </p>
-        <div className="contact-form">
-          <form onSubmit={handleSubmit}>
-            <div className="text-fields">
-              <input
-                type="text"
-                className="text-input name-input"
-                placeholder="Name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                required
+    <div className="contact-page">
+      <div className="contact-container">
+        <div className="text-zone">
+          <h1>
+            <AnimatedLetters
+              letterClass={letterClass}
+              strArray={strArray}
+              idx={15}
+            />
+          </h1>
+          <p>
+            I am interested in freelance opportunities, especially ambitious or
+            large projects. However, if you have other requests or questions,
+            don't hesitate to contact me using the form below.
+          </p>
+          <div className="contact-form">
+            <form onSubmit={handleSubmit}>
+              <div className="text-fields">
+                <input
+                  type="text"
+                  className="text-input name-input"
+                  placeholder="Name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                />
+                <input
+                  type="text"
+                  className="text-input subject-input"
+                  placeholder="Subject"
+                  name="subject"
+                  value={formData.subject}
+                  onChange={handleChange}
+                  required
+                />
+                <input
+                  type="email"
+                  className="text-input email-input"
+                  placeholder="Email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                />
+                <textarea
+                  className="text-input message-input"
+                  placeholder="Enter Message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              <button
+                type="submit"
+                className="flat-button"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? 'Sending...' : 'Submit'}
+              </button>
+            </form>
+          </div>
+        </div>
+        <div className="map-zone">
+          <div className="map-card">
+            <h2>Location</h2>
+            <p>Based in Manchester, UK</p>
+            <div className="map-container">
+              <iframe
+                title="Manchester Location"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d19003.19315678912!2d-2.242835!3d53.4807593!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487a4d4c5226f5db%3A0xd9be143804fe6baa!2sManchester!5e0!3m2!1sen!2suk!4v1700000000000!5m2!1sen!2suk"
+                width="100%"
+                height="300"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
               />
-              <input
-                type="text"
-                className="text-input subject-input"
-                placeholder="Subject"
-                name="subject"
-                value={formData.subject}
-                onChange={handleChange}
-                required
-              />
-              <input
-                type="email"
-                className="text-input email-input"
-                placeholder="Email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-              />
-              <textarea
-                className="text-input message-input"
-                placeholder="Enter Message"
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                required
-              ></textarea>
             </div>
-            <button type="submit" className="flat-button">
-              Submit
-            </button>
-          </form>
+          </div>
         </div>
       </div>
     </div>

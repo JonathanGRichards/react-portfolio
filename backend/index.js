@@ -6,9 +6,6 @@ require('dotenv').config({ path: './backend/.env' });
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-console.log('EMAIL_USER:', process.env.EMAIL_USER);
-console.log('EMAIL_PASS:', process.env.EMAIL_PASS);
-
 // Middleware
 app.use(cors());
 app.use(express.json());

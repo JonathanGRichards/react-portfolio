@@ -1,8 +1,6 @@
 @import '../../styles/_variables.scss';
 
-
-
-.home-page{
+.home-page {
   .text-zone {
     display: flex;
     left: 15%;
@@ -28,7 +26,6 @@
       font-size: 18px;
       position: absolute;
       margin-top: -40px;
-      left: 15px;
       opacity: 0.6;
       font-weight: 400;
     }
@@ -52,20 +49,18 @@
       margin-left: 20px;
       opacity: 0;
       animation: rotateIn 1s 1.4s linear both;
-
     }
   }
 
   h2 {
     color: $light-color;
-    opacity : 0.6;
+    opacity: 0.6;
     margin-top: 20px;
     font-weight: 400;
     font-family: 'Roboto-light', sans-serif;
     letter-spacing: 3px;
-    animation: fadeInTo60 1s 1.8s backwards;
+    animation: fadeInTo60 1s 2.4s backwards;
   }
-
 }
 
 .flat-button {

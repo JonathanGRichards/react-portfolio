@@ -2,12 +2,37 @@ import './index.scss'
 import AnimatedLetters from '../AnimatedLetters'
 import { useEffect, useState, useMemo } from 'react'
 import TechCube from './TechCube'
+import { motion, useMotionValue, useSpring } from 'framer-motion'
 
 const ANIMATION_DELAY = 3000
 
 const About = () => {
   const [letterClass, setLetterClass] = useState('text-animate')
   const nameArray = useMemo(() => ['A', 'b', 'o', 'u', 't', ' ', 'm', 'e'], [])
+
+  const springConfig = { damping: 20, stiffness: 100 }
+  const rotateX = useSpring(0, springConfig)
+  const rotateY = useSpring(0, springConfig)
+
+  const handleMouseMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect()
+    const width = rect.width
+    const height = rect.height
+
+    const mouseX = e.clientX - rect.left
+    const mouseY = e.clientY - rect.top
+
+    const centerX = width / 2
+    const centerY = height / 2
+
+    rotateX.set((mouseY - centerY) / 20)
+    rotateY.set((centerX - mouseX) / 20)
+  }
+
+  const handleMouseLeave = () => {
+    rotateX.set(0)
+    rotateY.set(0)
+  }
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -49,9 +74,29 @@ const About = () => {
           </p>
         </div>
         <div className="cube-zone">
-          <div className="cube-card">
+          <motion.div
+            className="cube-card"
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{
+              type: 'spring',
+              stiffness: 100,
+              damping: 15,
+              mass: 1,
+              delay: 2,
+            }}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            style={{
+              rotateX,
+              rotateY,
+              transformPerspective: 1000,
+            }}
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+          >
             <TechCube />
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>

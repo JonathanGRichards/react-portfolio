@@ -2,6 +2,7 @@ import './index.scss'
 import AnimatedLetters from '../AnimatedLetters'
 import { useMemo, useEffect, useState } from 'react'
 import axios from 'axios'
+import { motion, useMotionValue, useSpring } from 'framer-motion'
 
 const ANIMATION_DELAY = 2000
 
@@ -11,6 +12,13 @@ const Contact = () => {
     () => ['C', 'o', 'n', 't', 'a', 'c', 't', ' ', 'M', 'e'],
     []
   )
+
+  const x = useMotionValue(0)
+  const y = useMotionValue(0)
+
+  const springConfig = { damping: 20, stiffness: 100 }
+  const rotateX = useSpring(0, springConfig)
+  const rotateY = useSpring(0, springConfig)
 
   const [formData, setFormData] = useState({
     name: '',
@@ -39,6 +47,26 @@ const Contact = () => {
     } finally {
       setIsSubmitting(false)
     }
+  }
+
+  const handleMouseMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect()
+    const width = rect.width
+    const height = rect.height
+
+    const mouseX = e.clientX - rect.left
+    const mouseY = e.clientY - rect.top
+
+    const centerX = width / 2
+    const centerY = height / 2
+
+    rotateX.set((mouseY - centerY) / 20)
+    rotateY.set((centerX - mouseX) / 20)
+  }
+
+  const handleMouseLeave = () => {
+    rotateX.set(0)
+    rotateY.set(0)
   }
 
   useEffect(() => {
@@ -114,7 +142,27 @@ const Contact = () => {
           </div>
         </div>
         <div className="map-zone">
-          <div className="map-card">
+          <motion.div
+            className="map-card"
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{
+              type: 'spring',
+              stiffness: 100,
+              damping: 15,
+              mass: 1,
+              delay: 2,
+            }}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            style={{
+              rotateX,
+              rotateY,
+              transformPerspective: 1000,
+            }}
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+          >
             <h2>Location</h2>
             <p>Based in Manchester, UK</p>
             <div className="map-container">
@@ -129,7 +177,7 @@ const Contact = () => {
                 referrerPolicy="no-referrer-when-downgrade"
               />
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>

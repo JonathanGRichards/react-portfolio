@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
-  faAngular,
+  faNodeJs,
   faReact,
   faHtml5,
   faJsSquare,
@@ -17,7 +17,7 @@ const TechCube = () => {
 
   const faces = [
     {
-      icon: faAngular,
+      icon: faNodeJs,
       color: '#DD0031',
       transform: `translateZ(${halfSize}px)`,
     },

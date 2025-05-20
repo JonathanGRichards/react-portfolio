@@ -1,139 +1,132 @@
 @import '../../styles/_variables.scss';
 
 .nav-bar {
-  background: $secondary-color;
-  color: $light-color;
-  width: 10%;
-  height: 100%;
+  background: #000000;
+  width: 80px;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 3;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 20px 0;
+  transition: width 0.3s ease;
+
+  &:hover {
+    width: 180px;
+
+    .logo {
+      .sub-logo {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    nav a span {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
 
   .logo {
     display: flex;
-    max-width: 100%;
+    width: 100%;
     flex-direction: column;
     align-items: center;
-    padding: 16px 16px;
+    padding: 16px 0;
+    margin-bottom: 20px;
+    position: relative;
 
     img {
-      margin: 4px auto;
-      width: 90%;
-      height: auto;
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+      transition: all 0.3s ease;
 
       &.sub-logo-jonathan,
       &.sub-logo-richards {
-        width: 80%;
+        width: 50px;
+        height: auto;
+        margin: 4px 0;
       }
     }
 
     .sub-logo {
       display: flex;
       flex-direction: column;
-      height: 100%;
-      justify-content: flex-end;
+      align-items: center;
+      opacity: 0;
+      transform: translateX(-100px);
+      transition: all 0.3s ease;
     }
   }
+
   nav {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     width: 100%;
-    height: 100%;
-    gap: 33px;
-    padding: 16px 0;
-    margin-top: 16px;
-    margin-bottom: 90px;
+    gap: 12px;
+
     a {
-      color: $light-color;
-      font-size: 42px;
-      line-height: 51px;
-      height: 51px;
-      position: relative;
+      color: #fff;
       text-decoration: none;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      padding: 12px 20px;
+      position: relative;
+      transition: all 0.2s ease;
+      overflow: hidden;
 
       svg {
-        transition: all 0.3s ease-out;
+        font-size: 24px;
+        min-width: 24px;
+        transition: all 0.2s ease;
+      }
+
+      span {
+        font-size: 14px;
+        font-weight: 500;
+        margin-left: 16px;
+        opacity: 0;
+        transform: translateX(-20px);
+        transition: all 0.2s ease;
+        white-space: nowrap;
       }
 
       &:hover {
-        color: $primary-color;
+        background: rgba(255, 255, 255, 0.05);
+
         svg {
-          transform: scale(1.2);
-          opacity: 0;
-        }
-
-        &:after {
-          opacity: 1;
+          transform: scale(1.1);
         }
       }
-      &::after {
-        content: '';
-        font-size: 16px;
-        font-weight: regular;
-        letter-spacing: 2px;
-        position: absolute;
-        color: $light-color;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 100%;
-        text-align: center;
-        opacity: 0;
-        transition: all 0.3s ease-out;
-      }
 
-      &:first-child {
+      &.active {
+        color: #fe2c55;
+
+        svg {
+          transform: scale(1.1);
+        }
+
+        span {
+          color: #fe2c55;
+        }
+
         &::after {
-          content: 'HOME';
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 0;
+          height: 100%;
+          width: 3px;
+          background: #fe2c55;
+          border-radius: 0 2px 2px 0;
         }
-      }
-    }
-    a.about-link {
-      &::after {
-        content: 'ABOUT';
-      }
-    }
-    a.contact-link {
-      &::after {
-        content: 'Contact';
-      }
-    }
-
-    a.active {
-      color: $primary-color;
-      transition: all 0.3s ease-in-out;
-
-      svg {
-        color: $primary-color;
-        filter: drop-shadow(0 0 2px $primary-color)
-          drop-shadow(0 0 3px $primary-color)
-          drop-shadow(0 0 20px lighten($primary-color, 10%));
-        transition: all 0.3s ease-in-out;
-      }
-
-      &:hover svg {
-        text-shadow: 0 0 10px $primary-color, 0 0 10px $primary-color,
-          0 0 40px lighten($primary-color, 20%),
-          0 0 80px lighten($primary-color, 30%);
-        transform: scale(1.2); // Slightly enlarge the icon on hover
-      }
-
-      &::after {
-        color: $primary-color;
-        text-shadow: 0 0 10px $primary-color, 0 0 20px $primary-color,
-          0 0 40px lighten($primary-color, 20%),
-          0 0 80px lighten($primary-color, 30%);
       }
     }
   }

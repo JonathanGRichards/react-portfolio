@@ -4,7 +4,12 @@ import LogoJR from '../../assets/img/JR_logo.svg'
 import LogoSubJonat from '../../assets/img/Jonathan_sub.svg'
 import LogoSubRicha from '../../assets/img/Richards_sub.svg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEnvelope, faHome, faUser } from '@fortawesome/free-solid-svg-icons'
+import {
+  faEnvelope,
+  faHome,
+  faUser,
+  faFolderOpen,
+} from '@fortawesome/free-solid-svg-icons'
 
 const Sidebar = () => (
   <div className="nav-bar">
@@ -18,6 +23,7 @@ const Sidebar = () => (
     <nav>
       <NavLink exact="true" activeclassname="active" to="/">
         <FontAwesomeIcon icon={faHome} />
+        <span>Home</span>
       </NavLink>
       <NavLink
         exact="true"
@@ -26,6 +32,16 @@ const Sidebar = () => (
         to="/about"
       >
         <FontAwesomeIcon icon={faUser} />
+        <span>About</span>
+      </NavLink>
+      <NavLink
+        exact="true"
+        activeclassname="active"
+        className="projects-link"
+        to="/projects"
+      >
+        <FontAwesomeIcon icon={faFolderOpen} />
+        <span>Projects</span>
       </NavLink>
       <NavLink
         exact="true"
@@ -34,6 +50,7 @@ const Sidebar = () => (
         to="/contact"
       >
         <FontAwesomeIcon icon={faEnvelope} />
+        <span>Contact</span>
       </NavLink>
     </nav>
   </div>

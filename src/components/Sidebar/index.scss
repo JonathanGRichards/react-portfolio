@@ -23,11 +23,28 @@
     position: absolute;
     right: 20px;
     top: 15px;
-    z-index: 5;
+    z-index: 15;
     transition: all 0.3s ease;
+    pointer-events: auto;
+    background: transparent;
+    border: none;
+    padding: 8px;
+    border-radius: 4px;
+    outline: none;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    &:focus {
+      outline: 2px solid $accent-color;
+      outline-offset: 2px;
+    }
 
     svg {
       transition: transform 0.3s ease;
+      pointer-events: none;
+      display: block;
     }
   }
 
@@ -87,6 +104,7 @@
     width: 100%;
     gap: 12px;
     flex: 1;
+    overflow-y: auto;
 
     a {
       color: #fff;
@@ -171,9 +189,12 @@
     width: 100%;
     height: 60px;
     flex-direction: row;
-    padding: 0 20px;
+    padding: 10px 20px;
     justify-content: space-between;
     transition: height 0.3s ease;
+    max-height: 100vh;
+    overflow: hidden;
+    z-index: 1001;
 
     .hamburger {
       display: block;
@@ -205,25 +226,31 @@
     }
 
     nav {
-      position: absolute;
+      position: fixed;
       top: 60px;
       left: 0;
       width: 100%;
       background: #000000;
       flex-direction: column;
       padding: 10px 0;
-      height: 0;
-      overflow: hidden;
+      max-height: calc(100vh - 60px);
+      overflow-y: auto;
       opacity: 0;
+      transform: translateY(-100%);
       transition: all 0.3s ease;
       align-items: center;
-      z-index: 10;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      pointer-events: none;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 
       a {
         padding: 15px 20px;
         width: 85%;
         justify-content: center;
         text-align: center;
+        flex-shrink: 0;
+        pointer-events: auto;
 
         span {
           opacity: 1;
@@ -244,6 +271,7 @@
         padding-top: 15px;
         border-top: 1px solid rgba(255, 255, 255, 0.1);
         gap: 30px;
+        flex-shrink: 0;
 
         a {
           width: auto;
@@ -252,6 +280,7 @@
           align-items: center;
           justify-content: center;
           color: #fff;
+          pointer-events: auto;
 
           svg {
             font-size: 22px;
@@ -270,13 +299,14 @@
     }
 
     &.open {
-      height: 60px;
+      height: auto;
+      max-height: 100vh;
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 
       nav {
-        height: auto;
         opacity: 1;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        transform: translateY(0);
+        pointer-events: auto;
       }
     }
 
@@ -292,7 +322,7 @@
 
   // Mobile styles
   &.mobile {
-    height: auto;
+    height: 60px;
     width: 100%;
     flex-direction: row;
     position: fixed;
@@ -302,14 +332,16 @@
     border-right: none;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     padding: 0;
+    z-index: 1000;
 
     .logo {
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
-      bottom: 53px; // Positioned above the navbar
+      bottom: 35px;
       margin: 0;
       padding: 0;
+      z-index: 1001;
 
       img {
         width: 50px;
@@ -328,25 +360,29 @@
     nav {
       flex-direction: row;
       justify-content: space-around;
-      padding: 10px 0;
+      padding: 8px 0;
       gap: 0;
+      height: 100%;
+      overflow: visible;
 
       a {
         flex: 1;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        padding: 10px 0;
+        padding: 8px 4px;
+        height: 100%;
 
         svg {
-          font-size: 22px;
+          font-size: 20px;
         }
 
         span {
-          font-size: 10px;
-          margin: 5px 0 0;
+          font-size: 9px;
+          margin: 2px 0 0;
           opacity: 1;
           transform: none;
+          line-height: 1;
         }
 
         &.active::after {
@@ -369,17 +405,21 @@
   }
 }
 
-// Adjust layout for responsive sidebar
+// Adjust layout for responsive sidebar - ensure 100vh constraint
 @media screen and (max-width: $tablet-breakpoint) {
   .page {
     padding-left: 0;
-    padding-top: 70px; // For tablet header
+    padding-top: 60px;
+    height: 100vh;
+    overflow-y: auto;
   }
 }
 
 @media screen and (max-width: $mobile-breakpoint) {
   .page {
     padding-top: 0;
-    padding-bottom: 70px; // For mobile footer
+    padding-bottom: 60px;
+    height: 100vh;
+    overflow-y: auto;
   }
 }

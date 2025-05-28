@@ -21,10 +21,17 @@
     animation: fadeIn 1s 1.8s backwards, fadeOut 1s 7s forwards;
     
   }
+
+  @media screen and (max-width: $tablet-breakpoint) {
+    position: relative;
+    right: 0;
+    width: 80%;
+    height: auto;
+    justify-self: flex-start;
+  }
 }
 
-.solid-logo {
-  position: absolute; 
+.solid-logo { 
   opacity: 0;
   left: 0;
   width: 100%;

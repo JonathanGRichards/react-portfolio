@@ -6,14 +6,19 @@
   width: 100%;
   perspective: 1200px;
   transform-style: preserve-3d;
+  overflow: hidden;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .cube {
   position: relative;
   transform-style: preserve-3d;
   transform-origin: center;
-  width: 200px;
-  height: 200px;
+  width: var(--cube-size);
+  height: var(--cube-size);
+  max-width: 200px;
+  max-height: 200px;
 }
 
 .face {
@@ -26,8 +31,8 @@
   border-radius: 8px;
   transform-style: preserve-3d;
   backface-visibility: visible;
-  width: 200px;
-  height: 200px;
+  width: var(--cube-size);
+  height: var(--cube-size);
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease;
 
@@ -37,21 +42,33 @@
   }
 }
 
-// Media queries for responsive design
+.tech-icon {
+  font-size: var(--icon-size);
+  min-font-size: 20px;
+  max-font-size: 100px;
+}
+
+// Media queries for responsive design - just container padding adjustments
 @media screen and (max-width: 1200px) {
-  .cube {
-    transform: scale(0.8);
+  .cube-container {
+    padding: 15px;
   }
 }
 
 @media screen and (max-width: 800px) {
-  .cube {
-    transform: scale(0.6);
+  .cube-container {
+    padding: 10px;
   }
 }
 
 @media screen and (max-width: 500px) {
-  .cube {
-    transform: scale(0.4);
+  .cube-container {
+    padding: 5px;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .cube-container {
+    padding: 5px;
   }
 }

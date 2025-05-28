@@ -11,14 +11,39 @@
     width: 100%;
     position: absolute;
     max-height: 90%;
+
+    @media screen and (max-width: $tablet-breakpoint) {
+      position: relative;
+      left: 0;
+      width: 100%;
+      height: auto;
+      padding: 20px;
+      align-items: center;
+      text-align: center;
+    }
+
+    @media screen and (max-width: $mobile-breakpoint) {
+      left: 0;
+      max-width: 100%;
+      height: auto;
+      position: relative;
+      padding: 20px;
+      align-items: center;
+      text-align: center;
+    }
   }
   h1 {
     color: $light-color;
-    font-size: 42px;
+    font-size: 62px;
     text-align: left;
     margin: 0;
     font-family: 'IBMPlexMono', sans-serif;
     font-weight: 800;
+
+    @media screen and (max-width: $tablet-breakpoint) {
+      font-size: 42px;
+      text-align: center;
+    }
 
     &::before {
       content: '<h1>';
@@ -29,6 +54,10 @@
       margin-top: -40px;
       opacity: 0.6;
       font-weight: 400;
+
+      @media screen and (max-width: $tablet-breakpoint) {
+        display: none;
+      }
     }
 
     &::after {
@@ -37,19 +66,29 @@
       color: $accent-color;
       font-size: 18px;
       position: absolute;
-      margin-top: 28px;
+      margin-top: 52px;
       margin-left: 20px;
       opacity: 0.6;
       font-weight: 400;
       animation: fadeInTo60 0.5s 1.8s backwards;
+
+      @media screen and (max-width: $tablet-breakpoint) {
+        display: none;
+      }
     }
 
     img {
-      width: 26px;
+      width: 36px;
       height: auto;
       margin-left: 20px;
       opacity: 0;
       animation: rotateIn 1s 1.4s linear both;
+
+      @media screen and (max-width: $tablet-breakpoint) {
+        width: 25px;
+        margin-left: 10px;
+        margin-right: 2px;
+      }
     }
   }
 
@@ -61,6 +100,12 @@
     font-family: 'Roboto-light', sans-serif;
     letter-spacing: 3px;
     animation: fadeInTo60 1s 2.4s backwards;
+
+    @media screen and (max-width: $mobile-breakpoint) {
+      text-align: center;
+      letter-spacing: 2px;
+      font-size: 14px;
+    }
   }
 }
 
@@ -78,9 +123,45 @@
   animation: fadeInAnimation 0.5s 2.2s backwards;
   white-space: nowrap;
 
+  @media screen and (max-width: $mobile-breakpoint) {
+    font-size: 12px;
+    letter-spacing: 2px;
+    padding: 8px 16px;
+  }
+
   &:hover {
     background-color: $accent-color;
     color: $primary-color;
     transition: all 0.3s ease-in-out;
+  }
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+
+  @media screen and (max-width: $tablet-breakpoint) {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: auto;
+    min-height: calc(100vh - 120px);
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  @media screen and (max-width: $mobile-breakpoint) {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    min-height: calc(100vh - 140px);
+    padding: 20px;
+    box-sizing: border-box;
   }
 }

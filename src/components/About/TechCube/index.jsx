@@ -11,40 +11,37 @@ import {
 import './index.scss'
 
 const TechCube = () => {
-  const cubeSize = 200
-  const faceSize = cubeSize
-  const halfSize = cubeSize / 2
-
+  // Use CSS custom properties for responsive sizing
   const faces = [
     {
       icon: faNodeJs,
       color: '#DD0031',
-      transform: `translateZ(${halfSize}px)`,
+      transform: `translateZ(var(--cube-half-size))`,
     },
     {
       icon: faHtml5,
       color: '#F06529',
-      transform: `rotateY(90deg) translateZ(${halfSize}px)`,
+      transform: `rotateY(90deg) translateZ(var(--cube-half-size))`,
     },
     {
       icon: faCss3,
       color: '#28A4D9',
-      transform: `rotateY(180deg) translateZ(${halfSize}px)`,
+      transform: `rotateY(180deg) translateZ(var(--cube-half-size))`,
     },
     {
       icon: faReact,
       color: '#5ED4F4',
-      transform: `rotateY(-90deg) translateZ(${halfSize}px)`,
+      transform: `rotateY(-90deg) translateZ(var(--cube-half-size))`,
     },
     {
       icon: faJsSquare,
       color: '#EFD81D',
-      transform: `rotateX(90deg) translateZ(${halfSize}px)`,
+      transform: `rotateX(90deg) translateZ(var(--cube-half-size))`,
     },
     {
       icon: faGitAlt,
       color: '#EC4D28',
-      transform: `rotateX(-90deg) translateZ(${halfSize}px)`,
+      transform: `rotateX(-90deg) translateZ(var(--cube-half-size))`,
     },
   ]
 
@@ -52,10 +49,6 @@ const TechCube = () => {
     <div className="cube-container">
       <motion.div
         className="cube"
-        style={{
-          width: cubeSize,
-          height: cubeSize,
-        }}
         animate={{
           rotateX: [0, 360],
           rotateY: [0, 360],
@@ -71,15 +64,13 @@ const TechCube = () => {
             key={index}
             className="face"
             style={{
-              width: faceSize,
-              height: faceSize,
               transform: face.transform,
             }}
           >
             <FontAwesomeIcon
               icon={face.icon}
               color={face.color}
-              style={{ fontSize: '100px' }}
+              className="tech-icon"
             />
           </motion.div>
         ))}

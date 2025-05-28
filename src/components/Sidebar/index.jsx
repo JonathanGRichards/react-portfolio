@@ -1,5 +1,5 @@
 import { Link, NavLink } from 'react-router-dom'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import './index.scss'
 import LogoJR from '../../assets/img/JR_logo.svg'
 import LogoSubJonat from '../../assets/img/Jonathan_sub.svg'
@@ -14,24 +14,22 @@ import {
   faXmark,
 } from '@fortawesome/free-solid-svg-icons'
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
+import { ScreenContext } from '../Layout/index.jsx'
 
 const Sidebar = () => {
   const [menuOpen, setMenuOpen] = useState(false)
-  const [isMobile, setIsMobile] = useState(false)
-  const [isTablet, setIsTablet] = useState(false)
+  const { isMobile, isTablet } = useContext(ScreenContext)
 
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen)
+  }
+
+  // Close menu when screen size changes
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768)
-      setIsTablet(window.innerWidth >= 768 && window.innerWidth < 1024)
+    if (!isTablet) {
+      setMenuOpen(false)
     }
-
-    handleResize()
-    window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
-  }, [])
-
-  const toggleMenu = () => setMenuOpen(!menuOpen)
+  }, [isTablet])
 
   return (
     <div
@@ -40,9 +38,14 @@ const Sidebar = () => {
       } ${isTablet ? 'tablet' : ''}`}
     >
       {isTablet && (
-        <div className="hamburger" onClick={toggleMenu}>
+        <button
+          className="hamburger"
+          onClick={toggleMenu}
+          type="button"
+          aria-label="Toggle navigation menu"
+        >
           <FontAwesomeIcon icon={menuOpen ? faXmark : faBars} />
-        </div>
+        </button>
       )}
 
       <Link className="logo" to="/">

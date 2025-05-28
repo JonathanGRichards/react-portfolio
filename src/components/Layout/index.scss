@@ -3,7 +3,8 @@
 .layout-container {
   display: flex;
   width: 100%;
-  height: 100%;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .page {
@@ -12,6 +13,8 @@
   position: relative;
   padding-left: $sidebar-width;
   transition: all 0.3s ease;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .top-tags {
@@ -27,12 +30,14 @@
   font-size: 18px;
   color: $accent-color;
   font-family: 'Cambo', sans-serif;
+  transition: all 0.3s ease;
 
   @media screen and (max-width: $tablet-breakpoint) {
     left: 5%;
   }
 
   @media screen and (max-width: $mobile-breakpoint) {
+    left: 5%;
     font-size: 14px;
   }
 }
@@ -43,7 +48,6 @@
 
 .container {
   width: 100%;
-  will-change: contents;
   height: 90vh;
   min-height: 566px;
   opacity: 0;
@@ -58,7 +62,7 @@
 .contact-page {
   .text-zone {
     position: absolute;
-    height: 90vh;
+    height: 100%;
     left: 15%;
     display: flex;
     flex-direction: column;
@@ -67,16 +71,11 @@
     max-width: 35%;
 
     @media screen and (max-width: $tablet-breakpoint) {
-      left: 10%;
-      max-width: 80%;
-    }
-
-    @media screen and (max-width: $mobile-breakpoint) {
       position: relative;
       left: 0;
       padding: 20px;
       max-width: 100%;
-      height: auto;
+      height: 50%;
       align-items: center;
       text-align: center;
     }
@@ -108,10 +107,8 @@
       line-height: 18px;
       animation: fadeInTo60 0.5s 1.2s backwards;
 
-      @media screen and (max-width: $mobile-breakpoint) {
-        font-size: 14px;
-        top: -20px;
-        left: 0;
+      @media screen and (max-width: $tablet-breakpoint) {
+        display: none;
       }
     }
     &::after {
@@ -127,21 +124,21 @@
       line-height: 18px;
       animation: fadeInTo60 0.5s 1.2s backwards;
 
-      @media screen and (max-width: $mobile-breakpoint) {
-        font-size: 14px;
-        left: 0;
+      @media screen and (max-width: $tablet-breakpoint) {
+        display: none;
       }
     }
   }
   p {
-    font-size: 13px;
+    font-size: 20px;
     color: $light-color;
     font-family: 'Roboto-light', sans-serif;
     font-weight: 300;
     min-width: fit-content;
     animation: fadeIn 0.5s backwards, pulse 1s 0.5s;
 
-    @media screen and (max-width: $mobile-breakpoint) {
+    @media screen and (max-width: $tablet-breakpoint) {
+      font-size: 18px;
       width: 100%;
       text-align: center;
     }
@@ -171,14 +168,55 @@
 // Responsive layout adjustments
 .mobile-layout {
   .page {
+    position: initial;
+    height: 100vh;
     padding-left: 0;
-    padding-bottom: 70px;
+    padding-bottom: 60px;
+    overflow-y: auto;
+  }
+
+  .container {
+    position: initial;
+  }
+
+  .tags {
+    left: 5%;
+  }
+
+  .top-tags {
+    top: 2.1875rem;
+  }
+  .bottom-tags {
+    bottom: 80px; // Account for mobile navbar height + spacing
   }
 }
 
 .tablet-layout {
   .page {
+    position: initial;
     padding-left: 0;
-    padding-top: 70px;
+    padding-top: 60px;
+    height: 100vh;
+    overflow-y: auto;
+  }
+
+  .container {
+    position: initial;
+  }
+
+  .tags {
+    left: 5%;
+  }
+
+  .top-tags {
+    top: 80px; // Move down to accommodate top navbar + spacing
+  }
+}
+
+.desktop-layout {
+  .page {
+    padding-left: $sidebar-width;
+    height: 100vh;
+    overflow-y: auto;
   }
 }

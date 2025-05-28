@@ -1,26 +1,84 @@
 @import '../../Styles/_variables.scss';
 
 .about-page {
+  height: 100%;
+  overflow-y: auto;
+
   .about-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: flex-start;
     width: 100%;
-    height: 100%;
+    height: auto;
     padding-right: 10%;
+    min-height: calc(100vh - 40px);
+
+    @media screen and (max-width: $tablet-breakpoint) {
+      flex-direction: column;
+      padding: 20px;
+      min-height: auto;
+      max-height: calc(100vh - 120px);
+    }
   }
 
+  // Override the Layout's text-zone styles for scrollable content
   .text-zone {
-    position: relative;
-    min-height: fit-content;
-    width: 50%;
+    // Create a scrollable container for paragraphs
+    .text-content {
+      max-height: 60vh; // Limit height to make scrollable
+      overflow-y: auto;
+      padding-right: 12px; // Space for scrollbar
 
-    h1 {
-      margin-bottom: 30px;
+      @media screen and (max-width: $tablet-breakpoint) {
+        max-height: 40vh; // Adjust for smaller screens
+        width: 100%;
+      }
+
+      @media screen and (max-width: $mobile-breakpoint) {
+        max-height: 35vh;
+      }
+
+      // Custom scrollbar styling
+      &::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      &::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 4px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: $accent-color;
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background: lighten($accent-color, 10%);
+        }
+      }
+
+      &::-webkit-scrollbar-thumb:active {
+        background: darken($accent-color, 10%);
+      }
+
+      // Firefox scrollbar
+      scrollbar-width: thin;
+      scrollbar-color: $accent-color rgba(255, 255, 255, 0.1);
     }
 
-    p {
-      margin-bottom: 15px;
+    // Ensure proper layout proportions on smaller screens
+    @media screen and (max-width: $tablet-breakpoint) {
+      width: 100% !important;
+      max-width: 100% !important;
+      height: 50% !important;
+      margin-bottom: 20px;
+
+      // Center the content horizontally
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
     }
   }
 
@@ -32,14 +90,89 @@
     width: 40%;
     max-width: 500px;
 
+    // CSS custom properties for responsive cube sizing
+    --cube-size: min(200px, 80vw);
+    --cube-half-size: calc(var(--cube-size) / 2);
+    --icon-size: calc(var(--cube-size) * 0.5);
+
+    @media screen and (max-width: $tablet-breakpoint) {
+      position: relative;
+      right: auto;
+      top: auto;
+      transform: none;
+      width: 100%;
+      max-width: 600px;
+      margin: 20px auto;
+      height: 50%; // Ensure 50% height split
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      --cube-size: min(160px, 70vw);
+      --icon-size: calc(var(--cube-size) * 0.5);
+    }
+
+    @media screen and (max-width: $mobile-breakpoint) {
+      --cube-size: min(120px, 60vw);
+      --icon-size: calc(var(--cube-size) * 0.5);
+    }
+
+    @media screen and (max-width: 500px) {
+      --cube-size: min(80px, 50vw);
+      --icon-size: calc(var(--cube-size) * 0.5);
+    }
+
+    @media screen and (max-width: 350px) {
+      --cube-size: min(60px, 45vw);
+      --icon-size: calc(var(--cube-size) * 0.4);
+    }
+
     .cube-card {
       background: rgba(0, 0, 0, 0.3);
       padding: 24px;
       border-radius: 4px;
       border: 1px solid $accent-color;
       position: relative;
-      height: 400px;
+      height: calc(
+        var(--cube-size, 200px) * 2
+      ); // Give cube 2x its size for proper breathing room
+      width: calc(
+        var(--cube-size, 200px) * 2.4
+      ); // Make it wider than height for better proportions
       overflow: hidden;
+
+      @media screen and (max-width: $tablet-breakpoint) {
+        height: calc(
+          var(--cube-size, 160px) * 2.2
+        ); // Slightly more generous on tablet
+        width: calc(var(--cube-size, 160px) * 2.6);
+        max-width: 400px;
+        padding: 20px;
+      }
+
+      @media screen and (max-width: $mobile-breakpoint) {
+        height: calc(var(--cube-size, 120px) * 2.5); // More generous on mobile
+        width: calc(var(--cube-size, 120px) * 2.9);
+        padding: 16px;
+        max-width: 350px;
+      }
+
+      @media screen and (max-width: 500px) {
+        height: calc(
+          var(--cube-size, 80px) * 3
+        ); // Even more generous on small screens
+        width: calc(var(--cube-size, 80px) * 3.4);
+        padding: 12px;
+        max-width: 280px;
+      }
+
+      @media screen and (max-width: 350px) {
+        height: calc(
+          var(--cube-size, 60px) * 3.5
+        ); // Most generous on very small screens
+        width: calc(var(--cube-size, 60px) * 3.9);
+        padding: 10px;
+        max-width: 220px;
+      }
 
       &::before,
       &::after {
@@ -93,32 +226,6 @@
         animation: moveStarsLayer2 18s ease-in-out infinite;
         opacity: 0.2;
       }
-    }
-  }
-
-  @media screen and (max-width: 1200px) {
-    .cube-zone {
-      position: relative;
-      right: auto;
-      top: auto;
-      transform: none;
-      width: 90%;
-      margin: 20px auto;
-
-      .cube-card {
-        height: 350px;
-      }
-    }
-
-    .text-zone {
-      position: relative;
-      width: 90%;
-      margin: 0 auto;
-    }
-
-    .about-container {
-      flex-direction: column;
-      padding: 20px;
     }
   }
 }

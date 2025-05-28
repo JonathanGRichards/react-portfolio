@@ -52,26 +52,28 @@ const About = () => {
               idx={15}
             />
           </h1>
-          <p>
-            I'm a passionate web developer with a knack for creating dynamic and
-            responsive web applications. I have a strong foundation in both
-            front-end and back-end technologies, allowing me to build complete
-            solutions.
-          </p>
-          <p>
-            I thrive in collaborative environments and enjoy working with teams
-            to bring ideas to life. My goal is to continuously learn and adapt
-            to new challenges in the ever-evolving tech landscape.
-          </p>
-          <p>
-            I am particularly interested in the intersection of technology and
-            design, and I strive to create user-friendly experiences that are
-            both functional and aesthetically pleasing.
-          </p>
-          <p>
-            If you're looking for a dedicated and skilled developer to join your
-            team, feel free to reach out!
-          </p>
+          <div className="text-content">
+            <p>
+              I'm a passionate web developer with a knack for creating dynamic
+              and responsive web applications. I have a strong foundation in
+              both front-end and back-end technologies, allowing me to build
+              complete solutions.
+            </p>
+            <p>
+              I thrive in collaborative environments and enjoy working with
+              teams to bring ideas to life. My goal is to continuously learn and
+              adapt to new challenges in the ever-evolving tech landscape.
+            </p>
+            <p>
+              I am particularly interested in the intersection of technology and
+              design, and I strive to create user-friendly experiences that are
+              both functional and aesthetically pleasing.
+            </p>
+            <p>
+              If you're looking for a dedicated and skilled developer to join
+              your team, feel free to reach out!
+            </p>
+          </div>
         </div>
         <div className="cube-zone">
           <motion.div

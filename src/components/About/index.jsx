@@ -2,7 +2,7 @@ import './index.scss'
 import AnimatedLetters from '../AnimatedLetters'
 import { useEffect, useState, useMemo } from 'react'
 import TechCube from './TechCube'
-import { motion, useMotionValue, useSpring } from 'framer-motion'
+import { motion, useSpring } from 'framer-motion'
 
 const ANIMATION_DELAY = 3000
 

@@ -38,11 +38,11 @@
   },
   "scripts": {
     "start": "nodemon backend/index.js",
-    "client": "yarn react-scripts start",
+    "client": "react-scripts start",
     "dev": "concurrently \"yarn start\" \"yarn client\"",
-    "build": "yarn react-scripts build",
-    "test": "yarn react-scripts test",
-    "eject": "yarn react-scripts eject"
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [

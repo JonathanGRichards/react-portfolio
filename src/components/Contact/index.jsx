@@ -2,7 +2,7 @@ import './index.scss'
 import AnimatedLetters from '../AnimatedLetters'
 import { useMemo, useEffect, useState } from 'react'
 import axios from 'axios'
-import { motion, useMotionValue, useSpring } from 'framer-motion'
+import { motion, useSpring } from 'framer-motion'
 
 const ANIMATION_DELAY = 2000
 
@@ -12,9 +12,6 @@ const Contact = () => {
     () => ['C', 'o', 'n', 't', 'a', 'c', 't', ' ', 'M', 'e'],
     []
   )
-
-  const x = useMotionValue(0)
-  const y = useMotionValue(0)
 
   const springConfig = { damping: 20, stiffness: 100 }
   const rotateX = useSpring(0, springConfig)

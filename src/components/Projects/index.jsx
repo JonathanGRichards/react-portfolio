@@ -1,10 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react'
-import {
-  motion,
-  AnimatePresence,
-  useMotionValue,
-  useSpring,
-} from 'framer-motion'
+import { motion, AnimatePresence, useSpring } from 'framer-motion'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faChevronLeft,

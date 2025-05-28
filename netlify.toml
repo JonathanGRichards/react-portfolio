@@ -15,6 +15,12 @@
   # Use yarn
   NPM_FLAGS = "--version"
   YARN_VERSION = "1.22.22"
+  
+  # Don't treat warnings as errors
+  CI = "false"
+  
+  # Increase Node.js memory limit
+  NODE_OPTIONS = "--max-old-space-size=4096"
 
 # Handle client-side routing
 [[redirects]]

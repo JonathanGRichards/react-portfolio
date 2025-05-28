@@ -152,7 +152,7 @@ const Projects = () => {
       window.removeEventListener('sidebarStateChange', handleSidebarChange)
   }, [])
 
-  const { projectsPerPage, totalPages, currentProjects } = useMemo(() => {
+  const { totalPages, currentProjects } = useMemo(() => {
     let projectsPerPage = PROJECTS_PER_PAGE.DESKTOP
     if (windowWidth <= 768) {
       projectsPerPage = PROJECTS_PER_PAGE.MOBILE
@@ -167,7 +167,7 @@ const Projects = () => {
       startIndex + projectsPerPage
     )
 
-    return { projectsPerPage, totalPages, currentProjects }
+    return { totalPages, currentProjects }
   }, [currentPage, windowWidth])
 
   const nextPage = () => {

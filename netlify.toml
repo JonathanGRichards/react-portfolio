@@ -1,0 +1,23 @@
+[build]
+  # Build command
+  command = "yarn build"
+  
+  # Directory with the built files
+  publish = "build"
+  
+  # Base directory should be empty (root of repo)
+  base = ""
+
+[build.environment]
+  # Node.js version
+  NODE_VERSION = "20.11.0"
+  
+  # Use yarn
+  NPM_FLAGS = "--version"
+  YARN_VERSION = "1.22.22"
+
+# Handle client-side routing
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200 

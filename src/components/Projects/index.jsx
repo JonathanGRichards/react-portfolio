@@ -7,6 +7,10 @@ import {
   faExternalLinkAlt,
   faCode,
 } from '@fortawesome/free-solid-svg-icons'
+import project1Img from '../../assets/img/Screenshot-flixx.webp'
+import project2Img from '../../assets/img/Screenshot-crown-commerce.png'
+import project3Img from '../../assets/img/Screenshot-random-ideas.png'
+import project4Img from '../../assets/img/Screenshot-portfolio.png'
 import AnimatedLetters from '../AnimatedLetters'
 import './index.scss'
 
@@ -15,33 +19,36 @@ const ANIMATION_DELAY = 3000
 const projects = [
   {
     title: 'Project 1',
-    description: 'Description of project 1',
-    image: 'https://via.placeholder.com/300x200',
-    technologies: ['React', 'Node.js', 'MongoDB'],
+    description:
+      'Movie info application built with vanilla JavaScript that uses version 3 of the TMDB API',
+    image: project1Img,
+    technologies: ['Vanilla JS', 'HTML', 'CSS'],
     liveLink: '#',
     codeLink: '#',
   },
   {
     title: 'Project 2',
-    description: 'Description of project 2',
-    image: 'https://via.placeholder.com/300x200',
-    technologies: ['React', 'Node.js', 'MongoDB'],
+    description:
+      'Full Stack E-Commerce Clothing shop made using React & firebase with Stripe payments implemented.',
+    image: project2Img,
+    technologies: ['React', 'Redux', 'Firebase', 'Stripe'],
     liveLink: '#',
     codeLink: '#',
   },
   {
     title: 'Project 3',
-    description: 'Description of project 3',
-    image: 'https://via.placeholder.com/300x200',
-    technologies: ['React', 'Node.js', 'MongoDB'],
+    description: 'This is a fullstack application for sharing random ideas.',
+    image: project3Img,
+    technologies: ['REST API', 'Node.js', 'MongoDB', 'Webpack'],
     liveLink: '#',
     codeLink: '#',
   },
   {
     title: 'Project 4',
-    description: 'Description of project 4',
-    image: 'https://via.placeholder.com/300x200',
-    technologies: ['React', 'Node.js', 'MongoDB'],
+    description:
+      'Full stack portfolio site for showcasing projects and abilities.',
+    image: project4Img,
+    technologies: ['React', 'Node.js', 'Express.js'],
     liveLink: '#',
     codeLink: '#',
   },

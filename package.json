@@ -38,6 +38,7 @@
   },
   "scripts": {
     "start": "nodemon backend/index.js",
+    "start:server": "node backend/index.js",
     "client": "react-scripts start",
     "dev": "concurrently \"yarn start\" \"yarn client\"",
     "build": "react-scripts build",

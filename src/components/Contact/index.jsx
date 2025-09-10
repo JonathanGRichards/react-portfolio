@@ -35,7 +35,9 @@ const Contact = () => {
     setIsSubmitting(true)
 
     try {
-      await axios.post('http://localhost:5000/send-email', formData)
+      const apiBaseUrl =
+        process.env.REACT_APP_API_BASE_URL || 'http://localhost:5000'
+      await axios.post(`${apiBaseUrl}/send-email`, formData)
       alert('Message sent successfully!')
       setFormData({ name: '', email: '', subject: '', message: '' })
     } catch (error) {

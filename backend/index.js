@@ -1,18 +1,18 @@
-const express = require('express');
-const cors = require('cors');
-const nodemailer = require('nodemailer');
-require('dotenv').config({ path: './backend/.env' });
+const express = require('express')
+const cors = require('cors')
+const nodemailer = require('nodemailer')
+require('dotenv').config({ path: './backend/.env' })
 
-const app = express();
-const PORT = process.env.PORT || 5000;
+const app = express()
+const PORT = process.env.PORT || 5000
 
 // Middleware
-app.use(cors());
-app.use(express.json());
+app.use(cors())
+app.use(express.json())
 
 // Email route
 app.post('/send-email', async (req, res) => {
-  const { name, email, subject, message } = req.body;
+  const { name, email, subject, message } = req.body
 
   try {
     const transporter = nodemailer.createTransport({
@@ -23,24 +23,29 @@ app.post('/send-email', async (req, res) => {
         user: process.env.EMAIL_USER, // Your Zoho email address
         pass: process.env.EMAIL_PASS, // Your Zoho email password or app-specific password
       },
-    });
-  
+    })
+
     const mailOptions = {
       from: process.env.EMAIL_USER,
       to: process.env.EMAIL_USER,
       replyTo: email,
       subject: `Portfolio Contact: ${subject}`,
       text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
-    };
-  
-    await transporter.sendMail(mailOptions);
-    res.status(200).send('Email sent successfully!');
+    }
+
+    await transporter.sendMail(mailOptions)
+    res.status(200).send('Email sent successfully!')
   } catch (error) {
-    res.status(500).send('Failed to send email.');
+    res.status(500).send('Failed to send email.')
   }
-});
+})
+
+// Health check route for uptime monitoring/probes
+app.get('/health', (req, res) => {
+  res.status(200).send('ok')
+})
 
 // Start server
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-});
+  console.log(`Server running on ${PORT}`)
+})

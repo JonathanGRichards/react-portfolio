@@ -68,9 +68,11 @@
       position: absolute;
       margin-top: 52px;
       margin-left: 20px;
+      margin-right: 20px;
       opacity: 0.6;
       font-weight: 400;
       animation: fadeInTo60 0.5s 1.8s backwards;
+      white-space: nowrap;
 
       @media screen and (max-width: $tablet-breakpoint) {
         display: none;

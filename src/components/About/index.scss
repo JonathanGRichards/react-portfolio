@@ -27,7 +27,8 @@
     .text-content {
       max-height: 60vh; // Limit height to make scrollable
       overflow-y: auto;
-      padding-right: 12px; // Space for scrollbar
+      padding: 22px; // Space for scrollbar
+      scrollbar-gutter: stable;
 
       @media screen and (max-width: $tablet-breakpoint) {
         max-height: 40vh; // Adjust for smaller screens
@@ -89,6 +90,7 @@
     transform: translateY(-50%);
     width: 40%;
     max-width: 500px;
+    perspective: 1200px;
 
     // CSS custom properties for responsive cube sizing
     --cube-size: min(200px, 80vw);
@@ -132,13 +134,13 @@
       border-radius: 4px;
       border: 1px solid $accent-color;
       position: relative;
+      transform-style: preserve-3d;
       height: calc(
         var(--cube-size, 200px) * 2
       ); // Give cube 2x its size for proper breathing room
       width: calc(
         var(--cube-size, 200px) * 2.4
       ); // Make it wider than height for better proportions
-      overflow: hidden;
 
       @media screen and (max-width: $tablet-breakpoint) {
         height: calc(

@@ -9,41 +9,45 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import AnimatedLetters from '../AnimatedLetters'
 import './index.scss'
+import Portfolio_scrnshot from '../../assets/img/projects/Portfolio_scrnshot.png'
+import Kingclothing_scrnshot from '../../assets/img/projects/Kingclothing_scrnshot.png'
+import WhatToWatch_scrnshot from '../../assets/img/projects/WhatToWatch_scrnshot.png'
+import RandomIdeas_scrnshot from '../../assets/img/projects/RandomIdeas_scrnshot.png'
 
 const ANIMATION_DELAY = 3000
 
 const projects = [
   {
-    title: 'Project 1',
-    description: 'Description of project 1',
-    image: 'https://via.placeholder.com/300x200',
-    technologies: ['React', 'Node.js', 'MongoDB'],
-    liveLink: '#',
-    codeLink: '#',
+    title: 'React Portfolio',
+    description: 'A portfolio website built with React.js, Express.js, and React Motion Library. It showcases my projects and skills.',
+    image: Portfolio_scrnshot,
+    technologies: ['React.js', 'Express.js backend', 'React Motion Library', 'SCSS'],
+    liveLink: 'https://www.jonathangrichards.com',
+    codeLink: 'https://github.com/JonathanGRichards/react-portfolio',
   },
   {
-    title: 'Project 2',
-    description: 'Description of project 2',
-    image: 'https://via.placeholder.com/300x200',
-    technologies: ['React', 'Node.js', 'MongoDB'],
-    liveLink: '#',
-    codeLink: '#',
+    title: 'E-commerce Website',
+    description: 'An e-commerce clothing website built with React.js and Firebase.',
+    image: Kingclothing_scrnshot,
+    technologies: ['React.js', 'Redux', 'Firebase', 'Styled Components', 'Stripe'],
+    liveLink: 'https://king-clothing-e-commerce.netlify.app/',
+    codeLink: 'https://github.com/JonathanGRichards/king-clothing',
   },
   {
-    title: 'Project 3',
-    description: 'Description of project 3',
-    image: 'https://via.placeholder.com/300x200',
-    technologies: ['React', 'Node.js', 'MongoDB'],
-    liveLink: '#',
-    codeLink: '#',
+    title: 'WhatToWatch',
+    description: 'A movie recommendation app built with Vanilla JS, OMDB API, and SCSS.',
+    image: WhatToWatch_scrnshot,
+    technologies: ['Vanilla JS', 'OMDB API', 'SCSS'],
+    liveLink: 'https://whattowatchtv.netlify.app/',
+    codeLink: 'https://github.com/JonathanGRichards/WhatToWatch-app',
   },
   {
-    title: 'Project 4',
-    description: 'Description of project 4',
-    image: 'https://via.placeholder.com/300x200',
-    technologies: ['React', 'Node.js', 'MongoDB'],
+    title: 'RandomIdeas',
+    description: 'A random idea generator built with Vanilla JS.',
+    image: RandomIdeas_scrnshot,
+    technologies: ['Vanilla JS', 'Node.js', 'Express.js', 'REST API', 'MongoDB'],
     liveLink: '#',
-    codeLink: '#',
+    codeLink: 'https://github.com/JonathanGRichards/randomideas-app',
   },
 ]
 

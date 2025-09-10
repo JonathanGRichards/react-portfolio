@@ -130,14 +130,14 @@ const Sidebar = () => {
       {!isTablet && (
         <div className="social-links">
           <a
-            href="https://github.com/yourusername"
+            href="https://github.com/JonathanGRichards"
             target="_blank"
             rel="noreferrer"
           >
             <FontAwesomeIcon icon={faGithub} />
           </a>
           <a
-            href="https://linkedin.com/in/yourusername"
+            href="https://linkedin.com/in/jonathan-richards-017258132/"
             target="_blank"
             rel="noreferrer"
           >
